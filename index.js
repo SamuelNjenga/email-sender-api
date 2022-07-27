@@ -16,7 +16,7 @@ let mailTransporter = nodemailer.createTransport({
 let details = {
   from: process.env.EMAIL_TEST,
   to: process.env.EMAIL_TO_SEND_TEST_TO,
-  subject: "My Nodemailer Application is out!",
+  subject: "My Nodemailer Application is out",
   text: "Bravo.You are our first sender.",
 };
 
