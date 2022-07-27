@@ -23,14 +23,29 @@ const handlebarOptions = {
 
 transporter.use("compile", hbs(handlebarOptions));
 
+users = [
+  {
+    email: process.env.FIRST_EMAIL_TO_TEST,
+    name: process.env.FIRST_FIRSTNAME_TO_TEST,
+  },
+  {
+    email: process.env.SECOND_EMAIL_TO_TEST,
+    name: process.env.SECOND_FIRSTNAME_TO_TEST,
+  },
+];
+
+const userEmails = users.map((item) => item.email).join(",");
+const userNames = users.map((item) => item.name).join(",");
+
 let mailOptions = {
   from: process.env.EMAIL_TEST,
-  to: process.env.EMAIL_TO_SEND_TEST_TO,
-  subject: "My Nodemailer Application is out",
+  to: userEmails,
+  subject: "Hey Customer. My Nodemailer Application is out",
   template: "email",
   context: {
     title: "Bravo",
     text: "Favorite Programming Language === JavaScript",
+    name: userNames,
   },
 };
 
